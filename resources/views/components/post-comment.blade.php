@@ -12,6 +12,7 @@
                 <time>{{ $comment->created_at->diffForHumans() }}</time>
             </p>
         </header>
+
         <p>
             {{ $comment->body }}
         </p>
