@@ -67,7 +67,11 @@
                             </header>
                             <div class="mt-5 mb-5">
                                 <textarea name="body" class="w-full text-sm focus:outline-none focus:ring" cols="30" rows="10"
-                                    placeholder="Quick, thing of something to say!"></textarea>
+                                    placeholder="Quick, thing of something to say!" required></textarea>
+
+                                @error('body')
+                                    <span class="text-red-500 text-xs">{{ $message }}</span>
+                                @enderror
                             </div>
 
                             <div class="flex justify-end mt-6 pt-6 border-t border-gray-200">
