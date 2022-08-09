@@ -14,9 +14,17 @@
     html {
         scroll-behavior: smooth;
     }
+
+    .clamp {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .clamp.one-line {
+        -webkit-line-clamp: 1;
+    }
 </style>
-
-
 
 <body style="font-family: Open Sans, sans-serif">
     <section class="px-6 py-8">
@@ -34,11 +42,11 @@
                     <span class="bg-purple-400 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">
                         Welcome, {{ auth()->user()->name }}!
                     </span>
-                    <form method="POST" action="/logout" class="text-xs font-semibold text-blue-500 ml-6">
+                    <form method="POST" action="/logout" class="text-xs font-semibold text-blue-500 ml-3">
                         @csrf
 
                         <button type="submit"
-                            class="rounded-full bg-violet-400 py-3 px-5 text-xs font-semibold text-white uppercase ">Log
+                            class="rounded-full bg-indigo-400 py-3 px-5 text-xs font-semibold text-white uppercase">Log
                             out</button>
                     </form>
                 @else
@@ -52,8 +60,8 @@
                     </a>
                 @endauth
                 <a href="#newsletter"
-                    class="bg-indigo-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">SUBSCRIBE
-                    FOR UPDATES</a>
+                    class="bg-indigo-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">Subscribe
+                    for updates</a>
             </div>
         </nav>
 
@@ -67,14 +75,21 @@
             <div class="mt-10">
                 <div class="relative inline-block mx-auto lg:bg-gray-200 rounded-full">
 
-                    <form method="POST" action="#" class="lg:flex text-sm">
+                    <form method="POST" action="/newsletter" class="lg:flex text-sm">
+                        @csrf
                         <div class="lg:py-3 lg:px-5 flex items-center">
                             <label for="email" class="hidden lg:inline-block">
                                 <img src="/images/mailbox-icon.svg" alt="mailbox letter">
                             </label>
 
-                            <input id="email" type="text" placeholder="Your email address"
-                                class="lg:bg-transparent py-2 lg:py-0 pl-4 focus-within:outline-none">
+                            <div>
+                                <input id="email" name="email" type="text" placeholder="Your email address"
+                                    class="lg:bg-transparent py-2 lg:py-0 pl-4 focus-within:outline-none">
+
+                                @error('body')
+                                    <span class="text-red-500 text-xs">{{ $message }}</span>
+                                @enderror
+                            </div>
                         </div>
 
                         <button type="submit"
