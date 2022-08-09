@@ -30,9 +30,7 @@
                 {!! $post->excerpt !!}
 
 
-                <p class="mt-4">
-                    {!! $post->body !!}
-                </p>
+
             </div>
 
             <footer class="flex justify-between items-center mt-8">
