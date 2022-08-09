@@ -74,7 +74,13 @@
             <p class="text-sm mt-3">Promise to keep the inbox clean. No bugs.</p>
             <div class="mt-10">
                 <div class="relative inline-block mx-auto lg:bg-gray-200 rounded-full">
-
+                    @if (session()->has('errors'))
+                        {{ session('errors') }}
+                        {{-- <div x-data="{ show: true }" x-init="setTimeout(() => show = false, 5000)" x-show="show"
+                        class="fixed bg-blue-500 text-white py-2 px-4 rounded-xl bottom-3 right-3 text-sm">
+                        <p>{{ session('message') }}</p>
+                    </div> --}}
+                    @endif
                     <form method="POST" action="/newsletter" class="lg:flex text-sm">
                         @csrf
                         <div class="lg:py-3 lg:px-5 flex items-center">
@@ -83,8 +89,9 @@
                             </label>
 
                             <div>
-                                <input id="email" name="email" type="text" placeholder="Your email address"
-                                    class="lg:bg-transparent py-2 lg:py-0 pl-4 focus-within:outline-none">
+                                <input id="email" name="email" type="email" placeholder="Your email address"
+                                    class="lg:bg-transparent py-2 lg:py-0 pl-4 focus-within:outline-none"
+                                    value="{{ session('_old_input') ? session('_old_input')['email'] : '' }}">
 
                                 @error('body')
                                     <span class="text-red-500 text-xs">{{ $message }}</span>
@@ -111,6 +118,7 @@
             <p>{{ session('success') }}</p>
         </div>
     @endif
+
 </body>
 
 </html>
