@@ -38,7 +38,7 @@
                         @csrf
 
                         <button type="submit"
-                            class="rounded-full bg-purple-300 py-3 px-5 text-xs font-semibold text-white uppercase ">Log
+                            class="rounded-full bg-violet-400 py-3 px-5 text-xs font-semibold text-white uppercase ">Log
                             out</button>
                     </form>
                 @else
@@ -47,12 +47,12 @@
                         Register
                     </a>
                     <a href="/login"
-                        class="bg-purple-600 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">
+                        class="bg-purple-400 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">
                         LogIn
                     </a>
                 @endauth
                 <a href="#newsletter"
-                    class="bg-blue-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">SUBSCRIBE
+                    class="bg-indigo-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">SUBSCRIBE
                     FOR UPDATES</a>
             </div>
         </nav>

@@ -22,7 +22,6 @@ use Spatie\YamlFrontMatter\YamlFrontMatter;
 */
 
 Route::get('ping', function () {
-    // require_once('.\vendor\autoload.php');
 
     $mailchimp = new ApiClient();
 
@@ -31,7 +30,14 @@ Route::get('ping', function () {
         'server' => 'us11'
     ]);
 
-    $response = $mailchimp->ping->get();
+    // $response = $mailchimp->lists->getListMembersInfo('a1d8e49862');
+
+    $response = $mailchimp->lists->addListMember('a1d8e49862', [
+        "email_address" => "Lindsey.White93@hotmail.com",
+        "status" => "pending",
+    ]);
+
+    // $response = $mailchimp->ping->get();
     ddd($response);
 });
 
