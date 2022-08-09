@@ -20,6 +20,8 @@ use Spatie\YamlFrontMatter\YamlFrontMatter;
 |
 */
 
+
+
 Route::get('/', [PostController::class, 'index'])->name('home');
 Route::get('/home', [PostController::class, 'index']);
 Route::get('post/{post:slug}', [PostController::class, 'show']);

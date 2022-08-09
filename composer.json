@@ -12,6 +12,7 @@
         "laravel/framework": "^8.75",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
+        "mailchimp/marketing": "^3.0",
         "spatie/yaml-front-matter": "^2.0"
     },
     "require-dev": {
@@ -35,10 +36,8 @@
         }
     },
     "scripts": {
-        "post-autoload-dump": [
-            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover --ansi"
-        ],
+        "pre-autoload-dump": ["cp ./vendor/mailchimp/marketing/lib/Configuration.php ./vendor/mailchimp/marketing/lib/ApiClient.php"],
+
         "post-update-cmd": [
             "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
         ],
@@ -49,6 +48,7 @@
             "@php artisan key:generate --ansi"
         ]
     },
+    
     "extra": {
         "laravel": {
             "dont-discover": []

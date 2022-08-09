@@ -14,16 +14,6 @@
     html {
         scroll-behavior: smooth;
     }
-
-    .clamp {
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-    }
-
-    .clamp.one-line {
-        -webkit-line-clamp: 1;
-    }
 </style>
 
 
@@ -37,7 +27,7 @@
                 </a>
             </div>
 
-            <div class="mt-8 md:mt-0 flex items-center">
+            <div id="up" class="mt-8 md:mt-0 flex items-center">
                 <a href="/" class="text-xs font-bold uppercase">Home</a>
 
                 @auth
@@ -88,11 +78,15 @@
                         </div>
 
                         <button type="submit"
-                            class="transition-colors duration-300 bg-blue-500 hover:bg-blue-600 mt-4 lg:mt-0 lg:ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-8">
+                            class="transition-colors duration-300 bg-purple-500 hover:bg-purple-600 mt-4 lg:mt-0 lg:ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-8">
                             Subscribe
                         </button>
                     </form>
                 </div>
+                <a href="#up"
+                    class="reset disp-block m-h-10 m-v-15 false ml-4 rounded-full transition-colors duration-300 bg-purple-300 hover:bg-purple-600 border border-gray-400 text-white py-3 px-5 text-xs uppercase">Go
+                    Up</a>
+
             </div>
         </footer>
     </section>
