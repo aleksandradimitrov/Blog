@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\Post;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -44,9 +45,15 @@ class PostController extends Controller
             'body' => 'required',
             'category_id' => ['required', Rule::exists('categories', 'id')],
             'title' => 'required',
+            'thumbnail' => 'required'
         ]);
         $attributes['user_id'] = auth()->id();
+        $filepath =  request()->file('thumbnail')->store('thumbnails');
+        $attributes['thumbnail'] = $filepath;
+        // ddd($attributes['thumbnail']);
+        // ddd($filepath);
         $post = Post::create($attributes);
+
         return redirect('/home');
     }
 }

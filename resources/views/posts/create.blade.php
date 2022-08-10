@@ -1,8 +1,11 @@
 <x-layout>
 
-    <section class="px-6 py-8">
-        <div class="max-w-sm mx-auto border border-gray-200 p-6 rounded-xl">
-            <form method="POST" action="/admin/posts">
+    <section class="px-6 py-8 max-w-md mx-auto">
+        <h1 class="text-lg font-bold mb-4">
+            Publish New Post!
+        </h1>
+        <div class="border border-gray-200 p-6 rounded-xl">
+            <form method="POST" action="/admin/posts" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-6">
                     <label class="block mb-2 uppercase font-bold text-xs text-gray-700" for="title">
@@ -52,6 +55,19 @@
 
                     @error('body')
                         <p class="text-red-500 text-xs mt-1">value="{{ old('body') }}"</p>
+                    @enderror
+                </div>
+
+                <div class="mb-6">
+                    <label class="block mb-2 uppercase font-bold text-xs text-gray-700" for="thumbnail">
+                        Thumbnail
+                    </label>
+
+                    <input class="border border-gray p-2 w-full" type="file" name="thumbnail" id="thumbnail"
+                        value="{{ old('slug') }}" required>
+
+                    @error('thumbnail')
+                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                     @enderror
                 </div>
 

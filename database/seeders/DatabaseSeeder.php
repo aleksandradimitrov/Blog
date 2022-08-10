@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\User;
 use App\Models\Post;
 use Illuminate\Database\Seeder;
@@ -16,9 +17,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        User::truncate();
-        Category::truncate();
-        Post::truncate();
+        // Category::truncate();
+        // Comment::truncate();
+        // User::truncate();
+        // Post::truncate();
+
         $user = User::factory()->create([
             'name' => 'John Doe'
         ]);
@@ -42,54 +45,5 @@ class DatabaseSeeder extends Seeder
                 ]);
             }
         }
-
-
-
-
-        // $user = User::factory()->create();
-
-        // $personal = Category::create([
-        //     'name' => 'Personal',
-        //     'slug' => 'personal'
-        // ]);
-
-        // $family = Category::create([
-        //     'name' => 'Family',
-        //     'slug' => 'family'
-        // ]);
-
-        // $work = Category::create([
-        //     'name' => 'Work',
-        //     'slug' => 'Work'
-        // ]);
-
-        // Post::create([
-        //     'user_id' => $user->id,
-        //     'category_id' => $family->id,
-        //     'title' => 'My Family Post',
-        //     'slug' => 'my-first-post', 
-        //     'excerpt' => '<p>Lorem ipsum dolor sit amet.</p>',
-        //     'body' => '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Morbi viverra vehicula nesl eget blandit.</p>'
-        // ]);
-
-        // Post::create([
-        //     'user_id' => $user->id,
-        //     'category_id' => $work->id,
-        //     'title' => 'My Work Post',
-        //     'slug' => 'my-second-post', 
-        //     'excerpt' => '<p>Lorem ipsum dolor sit amet.</p>',
-        //     'body' => '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Morbi viverra vehicula nesl eget blandit.</p>'
-        // ]);
-
-        // Post::create([
-        //     'user_id' => $user->id,
-        //     'category_id' => $personal->id,
-        //     'title' => 'My Personal Post',
-        //     'slug' => 'my-third-post', 
-        //     'excerpt' => '<p>Lorem ipsum dolor sit amet.</p>',
-        //     'body' => '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Morbi viverra vehicula nesl eget blandit.</p>'
-        // ]);
-
-
     }
 }
