@@ -26,7 +26,7 @@
                     </label>
 
                     <input class="border border-gray-400 p-2 w-full" type="password" name="password" id="password"
-                        value="{{ old('password') }}" required>
+                        autocomplete="new-password" required>
 
                     @error('password')
                         <p class="text-red-500 text-xs mt-1 p-2">{{ $message }}</p>

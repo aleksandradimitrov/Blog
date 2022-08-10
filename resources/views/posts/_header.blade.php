@@ -23,5 +23,15 @@
                     value="{{ request('search') }}">
             </form>
         </div>
+        @auth
+
+
+            @if (auth()->user()->username === 'Njanja')
+                <a href="/admin/posts/create"
+                    class="rounded-full p-3 border border-purple-500 text-purple-800 bg-purple-200">Add new
+                    post!</a>
+            @endif
+        @endauth
+
     </div>
 </header>

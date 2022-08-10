@@ -20,7 +20,6 @@ class MustBeAdministrator
     {
 
         if (auth()->guest()) {
-            abort(403);
             abort(Response::HTTP_FORBIDDEN);
         }
 
