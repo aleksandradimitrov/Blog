@@ -6,6 +6,7 @@ use App\Models\Post;
 use App\Models\Category;
 
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class PostController extends Controller
 {
@@ -27,5 +28,18 @@ class PostController extends Controller
     public function show(Post $post)
     {
         return view('posts.show', ['post' => $post]);
+    }
+    public function create()
+    {
+        // ddd(auth()->user()->username);
+        if (auth()->guest()) {
+            abort(403);
+            abort(Response::HTTP_FORBIDDEN);
+        }
+
+        if (auth()->user()->username != 'Njanja') {
+            abort(Response::HTTP_FORBIDDEN);
+        }
+        return view('posts.create');
     }
 }
