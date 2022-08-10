@@ -4,19 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Category;
-
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Symfony\Component\HttpFoundation\Response;
 
 class PostController extends Controller
 {
     public function index()
     {
-        // $currentCategory = (null !== request('category'))
-        //     ? Category::where('slug', request('category'))->first()
-        //     : null;
-        // $currentCategory = request('category');
-
         $posts = Post::latest()->filter(
             request(['category'])
         )->filter(request(['search', 'category', 'author']))
@@ -31,7 +26,6 @@ class PostController extends Controller
     }
     public function create()
     {
-        // ddd(auth()->user()->username);
         if (auth()->guest()) {
             abort(403);
             abort(Response::HTTP_FORBIDDEN);
@@ -44,6 +38,15 @@ class PostController extends Controller
     }
     public function store()
     {
-        ddd(request()->all());
+        $attributes = request()->validate([
+            'slug' => ['required', Rule::unique('posts', 'slug')],
+            'excerpt' => 'required',
+            'body' => 'required',
+            'category_id' => ['required', Rule::exists('categories', 'id')],
+            'title' => 'required',
+        ]);
+        $attributes['user_id'] = auth()->id();
+        $post = Post::create($attributes);
+        return redirect('/home');
     }
 }

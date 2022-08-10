@@ -91,7 +91,7 @@
                             <div>
                                 <input id="email" name="email" type="email" placeholder="Your email address"
                                     class="lg:bg-transparent py-2 lg:py-0 pl-4 focus-within:outline-none"
-                                    value="{{ session('_old_input') ? session('_old_input')['email'] : '' }}">
+                                    value="{{ old('email') }}">
 
                                 @error('body')
                                     <span class="text-red-500 text-xs">{{ $message }}</span>
