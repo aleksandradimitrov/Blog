@@ -42,6 +42,11 @@ Route::post('register', [RegisterController::class, 'store'])->middleware('guest
 Route::post('login', [SessionsController::class, 'store'])->middleware('guest');
 Route::get('login', [SessionsController::class, 'create'])->middleware('guest');
 
+Route::middleware('auth:sanctum')->group(function () {
+    Route::resource('blogs', BlogController::class);
+});
+
+
 // LOG OUT ROUTE
 Route::post('logout', [SessionsController::class, 'destroy'])->middleware('auth');
 
